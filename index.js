@@ -8,6 +8,10 @@ app.get("/", (req, res) => {
     res.send("Hola mundo");
 });
 
+app.get("/hola-mundo", (req, res) => {
+    res.send("Soy un get request!");
+});
+
 app.listen(port, () => {
     console.log("La app de prueba está corriendo en el puerto 5000");
 });
