@@ -35,6 +35,27 @@ const superTokensConfig = {
                         if (response.status === "OK") {
                             const { formFields } = input;
                             console.log(formFields);
+                            /* 
+                                Ejemplo
+                                console.log(formFields);
+                                Expected:
+                                [
+                                    {
+                                       "id": "email", "value": "hola@example.com" 
+                                    },
+                                    {
+                                        "id": "nombre", "value": "Juan"
+                                    },
+                                    {
+                                        "id": "apellidos", "value": "Perez"
+                                    }
+                                ]
+                            */
+                            /*
+                                Como guardar esta info en la base de datos? :/
+                                Hay que crear un nuevo servicio o una nueva colección?
+                                Aquí si me pierdo un poco
+                            */
                         }
                         return response;
                     },
