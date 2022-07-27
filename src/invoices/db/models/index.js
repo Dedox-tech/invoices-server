@@ -13,7 +13,14 @@ const create = async (invoice) => {
     return result;
 };
 
+const deleteAll = async (query) => {
+    const invoiceModel = mongoose.model("invoice", InvoiceSchema);
+    const result = await invoiceModel.deleteMany(query);
+    return result;
+};
+
 module.exports = {
     getAll,
     create,
+    deleteAll,
 };
