@@ -6,4 +6,4 @@ const generalInfo = {
     websiteBasePath: "/auth",
 };
 
-module.exports = { generalInfo };
+export default generalInfo;

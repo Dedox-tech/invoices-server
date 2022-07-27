@@ -1,9 +1,8 @@
 /* eslint-disable no-console */
-const EmailPassword = require("supertokens-node/recipe/emailpassword");
-const Session = require("supertokens-node/recipe/session");
-
-const { superTokensKeys } = require("./superTokensKeys");
-const { generalInfo } = require("./generalInfo");
+import EmailPassword from "supertokens-node/recipe/emailpassword";
+import Session from "supertokens-node/recipe/session";
+import superTokensKeys from "./superTokensKeys";
+import generalInfo from "./generalInfo";
 
 const superTokensConfig = {
     framework: "express",
@@ -45,4 +44,4 @@ const superTokensConfig = {
     ],
 };
 
-module.exports = { superTokensConfig };
+export default superTokensConfig;
