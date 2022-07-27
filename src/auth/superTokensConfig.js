@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 const EmailPassword = require("supertokens-node/recipe/emailpassword");
 const Session = require("supertokens-node/recipe/session");
-
 const { superTokensKeys } = require("./superTokensKeys");
 const { generalInfo } = require("./generalInfo");
 
