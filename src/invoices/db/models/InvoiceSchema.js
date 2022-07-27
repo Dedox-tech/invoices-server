@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const InvoiceSchema = new mongoose.Schema(
     {
@@ -17,4 +17,4 @@ const InvoiceSchema = new mongoose.Schema(
     }
 );
 
-export default InvoiceSchema;
+module.exports = InvoiceSchema;

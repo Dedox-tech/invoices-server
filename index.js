@@ -1,14 +1,19 @@
 /* eslint-disable no-console */
-import express from "express";
-import cors from "cors";
-import mongoose from "mongoose";
-import "dotenv/config";
-import supertokens from "supertokens-node";
-import EmailPassword from "supertokens-node/recipe/emailpassword";
-import { verifySession } from "supertokens-node/recipe/session/framework/express";
-import { middleware, errorHandler } from "supertokens-node/framework/express";
-import superTokensConfig from "./src/auth/superTokensConfig";
-import InvoicesRoutes from "./src/invoices/routes/index";
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+require("dotenv").config();
+const supertokens = require("supertokens-node");
+const EmailPassword = require("supertokens-node/recipe/emailpassword");
+const {
+    verifySession,
+} = require("supertokens-node/recipe/session/framework/express");
+const {
+    middleware,
+    errorHandler,
+} = require("supertokens-node/framework/express");
+const { superTokensConfig } = require("./src/auth/superTokensConfig");
+const InvoicesRoutes = require("./src/invoices/routes/index");
 
 // Init supertokens and the app
 supertokens.init(superTokensConfig);
@@ -47,6 +52,9 @@ db.once("open", () => {
     console.log("Connected successfully to MongoDB");
 });
 
+// Routes
+app.use("/invoices", InvoicesRoutes);
+
 // Testing routes
 app.get("/", verifySession(), async (req, res) => {
     const userId = req.session.getUserId();
@@ -59,9 +67,6 @@ app.get("/", verifySession(), async (req, res) => {
 app.get("/hola-mundo", (req, res) => {
     res.send("Soy un get request sin auth!");
 });
-
-// App Routes
-app.use("/invoices", InvoicesRoutes);
 
 // Connect port
 app.listen(port, () => {

@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import InvoiceSchema from "./InvoiceSchema";
+const mongoose = require("mongoose");
+const InvoiceSchema = require("./InvoiceSchema");
 
 const getAll = async (query) => {
     const invoiceModel = mongoose.model("invoice", InvoiceSchema);
@@ -13,4 +13,7 @@ const create = async (invoice) => {
     return result;
 };
 
-export { getAll, create };
+module.exports = {
+    getAll,
+    create,
+};

@@ -1,4 +1,4 @@
-import * as invoiceModels from "../db/models/index";
+const invoiceModels = require("../db/models/index");
 
 const getInvoices = async (req, res) => {
     const query = {};
@@ -43,4 +43,7 @@ const createInvoice = async (req, res) => {
     return res.status(200).send({ invoiceCreated });
 };
 
-export { getInvoices, createInvoice };
+module.exports = {
+    getInvoices,
+    createInvoice,
+};
