@@ -14,6 +14,7 @@ const {
 } = require("supertokens-node/framework/express");
 const { superTokensConfig } = require("./src/auth/superTokensConfig");
 const InvoicesRoutes = require("./src/invoices/routes/index");
+const UserRoutes = require("./src/users/routes/index");
 
 // Init supertokens and the app
 supertokens.init(superTokensConfig);
@@ -54,6 +55,7 @@ db.once("open", () => {
 
 // Routes
 app.use("/invoices", InvoicesRoutes);
+app.use("/users", UserRoutes);
 
 // Testing routes
 app.get("/", verifySession(), async (req, res) => {
@@ -61,7 +63,7 @@ app.get("/", verifySession(), async (req, res) => {
     const userInfo = await EmailPassword.getUserById(userId);
     console.log(userId);
     console.log(userInfo);
-    res.send("Hola mundo");
+    res.send({ message: "Hola mundo" });
 });
 
 app.get("/hola-mundo", (req, res) => {
