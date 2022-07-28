@@ -4,8 +4,17 @@ const InvoiceSchema = new mongoose.Schema(
     {
         addressFrom: String,
         cityFrom: String,
-        zipCode: String,
+        zipCodeFrom: Number,
         countryFrom: String,
+        customerName: String,
+        customerEmail: String,
+        customerAddress: String,
+        customerCity: String,
+        customerZipCode: String,
+        customerCountry: String,
+        invoiceDate: String,
+        payTerms: String,
+        description: String
     },
     {
         id: true,
