@@ -92,7 +92,7 @@ const updateInvoice = async (req, res) => {
         });
     }
 
-    return res.status(200).send(invoiceUpdated)
+    return res.status(200).send({ invoiceUpdated: "Updated correct" })
 }
 
 const deleteInvoice = async (req, res) => {
@@ -114,7 +114,7 @@ const deleteInvoice = async (req, res) => {
         });
     }
 
-    return res.status(200).send(invoiceDeleted)
+    return res.status(200).send({ invoiceDeleted: "Deleted correct" })
 }
 
 module.exports = {
