@@ -1,13 +1,13 @@
 const express = require("express");
-/* const {
+const {
     verifySession,
-} = require("supertokens-node/recipe/session/framework/express"); */
+} = require("supertokens-node/recipe/session/framework/express");
 
 const { getInvoices, getInvoice, createInvoice, updateInvoice, deleteInvoice } = require("../services/index");
 
 const router = express.Router();
 
-router.get("/", getInvoices);
+router.get("/", verifySession(), getInvoices);
 router.get("/:id", getInvoice);
 router.post("/", createInvoice);
 router.put("/:id", updateInvoice);
