@@ -3,7 +3,10 @@ const EmailPassword = require("supertokens-node/recipe/emailpassword");
 const Session = require("supertokens-node/recipe/session");
 const { superTokensKeys } = require("./superTokensKeys");
 const { generalInfo } = require("./generalInfo");
+const { aditionalFormFields } = require("./aditionalFormFields");
+const { localFields } = require("../utils/localFields");
 const mapIdToField = require("../utils/mapIdToField");
+const filterPasswordField = require("../utils/filterPasswordField");
 const { saveUser } = require("../users/services/index");
 
 const superTokensConfig = {
@@ -13,14 +16,7 @@ const superTokensConfig = {
     recipeList: [
         EmailPassword.init({
             signUpFeature: {
-                formFields: [
-                    {
-                        id: "nombre",
-                    },
-                    {
-                        id: "apellidos",
-                    },
-                ],
+                formFields: aditionalFormFields,
             },
             override: {
                 apis: (originalImplementation) => ({
@@ -35,29 +31,16 @@ const superTokensConfig = {
                             await originalImplementation.signUpPOST(input);
                         if (response.status === "OK") {
                             const { formFields } = input;
-                            console.log(formFields);
-                            const filteredFormField = formFields.filter(
-                                (element) => element.id !== "password"
-                            );
+                            const filteredFormField =
+                                filterPasswordField(formFields);
                             const query = {};
-                            query.nombre = mapIdToField(
-                                "nombre",
-                                filteredFormField
-                            );
-                            query.apellidos = mapIdToField(
-                                "apellidos",
-                                filteredFormField
-                            );
-                            query.email = mapIdToField(
-                                "email",
-                                filteredFormField
-                            );
-                            console.log(query);
-                            const test = async () => {
-                                const result = await saveUser(query);
-                                console.log(result);
-                            };
-                            test();
+                            localFields.forEach((element) => {
+                                query[element] = mapIdToField(
+                                    element,
+                                    filteredFormField
+                                );
+                            });
+                            await saveUser(query);
                         }
                         return response;
                     },
