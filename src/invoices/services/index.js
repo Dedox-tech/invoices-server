@@ -45,7 +45,6 @@ const getInvoice = async (req, res) => {
 
 const createInvoice = async (req, res) => {
     const invoice = req.body;
-
     const invoiceCreated = await invoiceModels.create(invoice);
 
     if (!invoiceCreated) {
@@ -64,6 +63,7 @@ const createInvoice = async (req, res) => {
 
     return res.status(200).send({ invoiceCreated });
 };
+
 
 const updateInvoice = async (req, res) => {
     const invoiceId = req.params.id
@@ -103,10 +103,11 @@ const deleteInvoice = async (req, res) => {
     if (!invoiceDeleted) {
         return res.status(500).send({
             code: "internal-error",
+
             message: "There is a problem with the server",
         });
     }
-
+    
     if (!invoiceId) {
         return res.status(400).send({
             code: "bad-request",
@@ -117,10 +118,32 @@ const deleteInvoice = async (req, res) => {
     return res.status(200).send({ invoiceDeleted: "Deleted correct" })
 }
 
+// This function is just for testing purposes
+const deleteAllInvoices = async (req, res) => {
+    const query = {};
+    const numberOfInvoicesDeleted = await invoiceModels.deleteAll(query);
+
+    if (!numberOfInvoicesDeleted) {
+        return res.status(500).send({
+            code: "bad-request",
+            message: "There is a problem with the server"
+         }
+    if (numberOfInvoicesDeleted.deletedCount === 0) {
+        return res.status(404).send({
+            code: "not-found",
+            message: "There is no more invoices for delete",
+        });
+    }
+
+    return res.status(200).send({ numberOfInvoicesDeleted });
+};
+
+
 module.exports = {
     getInvoices,
     getInvoice,
     createInvoice,
     updateInvoice,
-    deleteInvoice
+    deleteInvoice,
+    deleteAllInvoices,
 };

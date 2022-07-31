@@ -20,6 +20,7 @@ const create = async (invoice) => {
     return result;
 };
 
+
 const update = async (invoiceId, invoice) => {
     const filter = { _id: invoiceId }
     const invoiceModel = mongoose.model("invoice", InvoiceSchema)
@@ -34,10 +35,19 @@ const remove = async (invoiceId) => {
     return result
 }
 
+const deleteAll = async (query) => {
+    const invoiceModel = mongoose.model("invoice", InvoiceSchema);
+    const result = await invoiceModel.deleteMany(query);
+    return result;
+};
+
+
 module.exports = {
     getAll,
     getOne,
     create,
     update,
-    remove
+    remove,
+
+    deleteAll,
 };
