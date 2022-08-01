@@ -1,7 +1,8 @@
 const invoiceModels = require("../db/models/index");
 
 const getInvoices = async (req, res) => {
-    const query = {};
+    const userId = req.session.getUserId();
+    const query = { userId };
     const invoices = await invoiceModels.getAll(query);
 
     if (!invoices) {
@@ -45,7 +46,9 @@ const getInvoice = async (req, res) => {
 
 const createInvoice = async (req, res) => {
     const invoice = req.body;
-    const invoiceCreated = await invoiceModels.create(invoice);
+    const userId = req.session.getUserId();
+    const invoicePlusUserId = { ...invoice, userId };
+    const invoiceCreated = await invoiceModels.create(invoicePlusUserId);
 
     if (!invoiceCreated) {
         return res.status(500).send({
@@ -67,8 +70,10 @@ const createInvoice = async (req, res) => {
 const updateInvoice = async (req, res) => {
     const invoiceId = req.params.id;
     const invoice = req.body;
+    const userId = req.session.getUserId();
+    const invoicePlusUserId = { ...invoice, userId };
 
-    const invoiceUpdated = invoiceModels.update(invoiceId, invoice);
+    const invoiceUpdated = invoiceModels.update(invoiceId, invoicePlusUserId);
 
     if (!invoiceUpdated) {
         return res.status(500).send({
