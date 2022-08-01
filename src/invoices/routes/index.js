@@ -1,7 +1,7 @@
 const express = require("express");
-const {
+/* const {
     verifySession,
-} = require("supertokens-node/recipe/session/framework/express");
+} = require("supertokens-node/recipe/session/framework/express"); */
 
 const {
     getInvoices,
@@ -14,13 +14,13 @@ const {
 
 const router = express.Router();
 
-router.get("/", verifySession(), getInvoices);
+router.get("/", getInvoices);
 router.get("/:id", getInvoice);
 router.post("/", createInvoice);
 
 router.put("/:id", updateInvoice);
 router.delete("/:id", deleteInvoice);
 
-router.delete("/all", deleteAllInvoices);
+router.delete("/", deleteAllInvoices);
 
 module.exports = router;

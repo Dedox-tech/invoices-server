@@ -22,7 +22,8 @@ describe("Models functionality test", () => {
             customerZipCode: "90000",
             customerCountry: "México",
             invoiceDate: "28/07/2022",
-            payTerms: "",
+            invoiceStatus: "",
+            amountToPay: 50000,
             description: "",
         };
 
@@ -47,7 +48,8 @@ describe("Models functionality test", () => {
             customerZipCode: "90000",
             customerCountry: "México",
             invoiceDate: "28/07/2022",
-            payTerms: "",
+            invoiceStatus: "",
+            amountToPay: 50000,
             description: "",
         };
 
@@ -71,7 +73,8 @@ describe("Models functionality test", () => {
             customerZipCode: "90000",
             customerCountry: "México",
             invoiceDate: "28/07/2022",
-            payTerms: "",
+            invoiceStatus: "",
+            amountToPay: 50000,
             description: "",
         };
 
@@ -96,7 +99,8 @@ describe("Models functionality test", () => {
             customerZipCode: "90000",
             customerCountry: "México",
             invoiceDate: "28/07/2022",
-            payTerms: "",
+            invoiceStatus: "",
+            amountToPay: 50000,
             description: "",
         };
 
@@ -123,7 +127,8 @@ describe("Models functionality test", () => {
             customerZipCode: "90000",
             customerCountry: "México",
             invoiceDate: "28/07/2022",
-            payTerms: "",
+            invoiceStatus: "",
+            amountToPay: 50000,
             description: "",
         };
 
