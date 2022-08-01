@@ -22,9 +22,9 @@ const getInvoices = async (req, res) => {
 };
 
 const getInvoice = async (req, res) => {
-    const invoiceId = req.params.id
+    const invoiceId = req.params.id;
 
-    const invoice = invoiceModels.getOne(invoiceId)
+    const invoice = invoiceModels.getOne(invoiceId);
 
     if (!invoice) {
         return res.status(500).send({
@@ -40,8 +40,8 @@ const getInvoice = async (req, res) => {
         });
     }
 
-    return res.status(200).send({ invoice })
-}
+    return res.status(200).send({ invoice });
+};
 
 const createInvoice = async (req, res) => {
     const invoice = req.body;
@@ -64,12 +64,11 @@ const createInvoice = async (req, res) => {
     return res.status(200).send({ invoiceCreated });
 };
 
-
 const updateInvoice = async (req, res) => {
-    const invoiceId = req.params.id
-    const invoice = req.body
+    const invoiceId = req.params.id;
+    const invoice = req.body;
 
-    const invoiceUpdated = invoiceModels.update(invoiceId, invoice)
+    const invoiceUpdated = invoiceModels.update(invoiceId, invoice);
 
     if (!invoiceUpdated) {
         return res.status(500).send({
@@ -92,13 +91,13 @@ const updateInvoice = async (req, res) => {
         });
     }
 
-    return res.status(200).send({ invoiceUpdated: "Updated correct" })
-}
+    return res.status(200).send({ invoiceUpdated: "Updated correct" });
+};
 
 const deleteInvoice = async (req, res) => {
-    const invoiceId = req.params.id
+    const invoiceId = req.params.id;
 
-    const invoiceDeleted = invoiceModels.remove(invoiceId)
+    const invoiceDeleted = invoiceModels.remove(invoiceId);
 
     if (!invoiceDeleted) {
         return res.status(500).send({
@@ -107,7 +106,7 @@ const deleteInvoice = async (req, res) => {
             message: "There is a problem with the server",
         });
     }
-    
+
     if (!invoiceId) {
         return res.status(400).send({
             code: "bad-request",
@@ -115,8 +114,8 @@ const deleteInvoice = async (req, res) => {
         });
     }
 
-    return res.status(200).send({ invoiceDeleted: "Deleted correct" })
-}
+    return res.status(200).send({ invoiceDeleted: "Deleted correct" });
+};
 
 // This function is just for testing purposes
 const deleteAllInvoices = async (req, res) => {
@@ -126,8 +125,10 @@ const deleteAllInvoices = async (req, res) => {
     if (!numberOfInvoicesDeleted) {
         return res.status(500).send({
             code: "bad-request",
-            message: "There is a problem with the server"
-         }
+            message: "There is a problem with the server",
+        });
+    }
+
     if (numberOfInvoicesDeleted.deletedCount === 0) {
         return res.status(404).send({
             code: "not-found",
@@ -137,7 +138,6 @@ const deleteAllInvoices = async (req, res) => {
 
     return res.status(200).send({ numberOfInvoicesDeleted });
 };
-
 
 module.exports = {
     getInvoices,

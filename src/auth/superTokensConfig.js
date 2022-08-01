@@ -40,7 +40,8 @@ const superTokensConfig = {
                                     filteredFormField
                                 );
                             });
-                            await saveUser(query);
+                            const newUser = await saveUser(query);
+                            console.log(newUser);
                         }
                         return response;
                     },

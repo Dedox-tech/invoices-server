@@ -1,15 +1,14 @@
 /* eslint-disable no-return-await */
 /* eslint-disable no-undef */
-const db = require('./db.connect')
-const invoiceModels = require("../invoices/db/models/index")
+const db = require("./db.connect");
+const invoiceModels = require("../invoices/db/models/index");
 
-beforeAll(async () => await db.connect())
-afterEach(async () => await db.clearDatabase())
-afterAll(async () => await db.clearDatabase())
+beforeAll(async () => await db.connect());
+afterEach(async () => await db.clearDatabase());
+afterAll(async () => await db.clearDatabase());
 
 describe("Models functionality test", () => {
-
-    test('should create invoice', async () => {
+    test("should create invoice", async () => {
         const invoice = {
             addressFrom: "Av. Hermanos Serdán, Puebla, Pue.",
             cityFrom: "Puebla",
@@ -17,24 +16,24 @@ describe("Models functionality test", () => {
             countryFrom: "México",
             customerName: "Hector",
             customerEmail: "hectorBusiness@qgmail.com",
-            customerAddress: "20 de Nov. 47, Centro, 90000 Tlaxcala de Xicohténcatl, Tlax.",
+            customerAddress:
+                "20 de Nov. 47, Centro, 90000 Tlaxcala de Xicohténcatl, Tlax.",
             customerCity: "Tlaxcala",
             customerZipCode: "90000",
             customerCountry: "México",
             invoiceDate: "28/07/2022",
             payTerms: "",
-            description: ""
-        }
+            description: "",
+        };
 
-        const invoiceCreated = await invoiceModels.create(invoice)
-        const invoiceFinded = await invoiceModels.getOne(invoiceCreated.id)
+        const invoiceCreated = await invoiceModels.create(invoice);
+        const invoiceFinded = await invoiceModels.getOne(invoiceCreated.id);
 
+        expect(invoiceFinded.customerName).toEqual("Hector");
+        expect(invoiceFinded.cityFrom).toEqual("Puebla");
+    });
 
-        expect(invoiceFinded.customerName).toEqual("Hector")
-        expect(invoiceFinded.cityFrom).toEqual("Puebla")
-    })
-
-    test('should get all invoices', async () => {
+    test("should get all invoices", async () => {
         const invoice = {
             addressFrom: "Av. Hermanos Serdán, Puebla, Pue.",
             cityFrom: "Puebla",
@@ -42,23 +41,23 @@ describe("Models functionality test", () => {
             countryFrom: "México",
             customerName: "Hector",
             customerEmail: "hectorBusiness@qgmail.com",
-            customerAddress: "20 de Nov. 47, Centro, 90000 Tlaxcala de Xicohténcatl, Tlax.",
+            customerAddress:
+                "20 de Nov. 47, Centro, 90000 Tlaxcala de Xicohténcatl, Tlax.",
             customerCity: "Tlaxcala",
             customerZipCode: "90000",
             customerCountry: "México",
             invoiceDate: "28/07/2022",
             payTerms: "",
-            description: ""
-        }
+            description: "",
+        };
 
-        await invoiceModels.create(invoice)
-        const invoiceFinded = await invoiceModels.getAll({})
+        await invoiceModels.create(invoice);
+        const invoiceFinded = await invoiceModels.getAll({});
 
+        expect(invoiceFinded.length).toBeGreaterThan(0);
+    });
 
-        expect(invoiceFinded.length).toBeGreaterThan(0)
-    })
-
-    test('should get one invoice', async () => {
+    test("should get one invoice", async () => {
         const invoice = {
             addressFrom: "Av. Hermanos Serdán, Puebla, Pue.",
             cityFrom: "Puebla",
@@ -66,23 +65,24 @@ describe("Models functionality test", () => {
             countryFrom: "México",
             customerName: "Hector",
             customerEmail: "hectorBusiness@qgmail.com",
-            customerAddress: "20 de Nov. 47, Centro, 90000 Tlaxcala de Xicohténcatl, Tlax.",
+            customerAddress:
+                "20 de Nov. 47, Centro, 90000 Tlaxcala de Xicohténcatl, Tlax.",
             customerCity: "Tlaxcala",
             customerZipCode: "90000",
             customerCountry: "México",
             invoiceDate: "28/07/2022",
             payTerms: "",
-            description: ""
-        }
+            description: "",
+        };
 
-        const invoiceCreated = await invoiceModels.create(invoice)
+        const invoiceCreated = await invoiceModels.create(invoice);
 
-        const invoiceFinded = await invoiceModels.getOne(invoiceCreated.id)
+        const invoiceFinded = await invoiceModels.getOne(invoiceCreated.id);
 
-        expect(invoiceFinded.id).toBe(invoiceCreated.id)
-    })
+        expect(invoiceFinded.id).toBe(invoiceCreated.id);
+    });
 
-    test('should update a invoice', async () => {
+    test("should update a invoice", async () => {
         const invoice = {
             addressFrom: "Av. Hermanos Serdán, Puebla, Pue.",
             cityFrom: "Puebla",
@@ -90,23 +90,26 @@ describe("Models functionality test", () => {
             countryFrom: "México",
             customerName: "Hector",
             customerEmail: "hectorBusiness@qgmail.com",
-            customerAddress: "20 de Nov. 47, Centro, 90000 Tlaxcala de Xicohténcatl, Tlax.",
+            customerAddress:
+                "20 de Nov. 47, Centro, 90000 Tlaxcala de Xicohténcatl, Tlax.",
             customerCity: "Tlaxcala",
             customerZipCode: "90000",
             customerCountry: "México",
             invoiceDate: "28/07/2022",
             payTerms: "",
-            description: ""
-        }
+            description: "",
+        };
 
-        const invoiceCreated = await invoiceModels.create(invoice)
-        await invoiceModels.update(invoiceCreated.id, { customerName: "Ramiro", })
-        const invoiceFinded = await invoiceModels.getOne(invoiceCreated.id)
+        const invoiceCreated = await invoiceModels.create(invoice);
+        await invoiceModels.update(invoiceCreated.id, {
+            customerName: "Ramiro",
+        });
+        const invoiceFinded = await invoiceModels.getOne(invoiceCreated.id);
 
-        expect(invoiceFinded.customerName).toBe("Ramiro")
-    })
+        expect(invoiceFinded.customerName).toBe("Ramiro");
+    });
 
-    test('should delete a invoice', async () => {
+    test("should delete a invoice", async () => {
         const invoice = {
             addressFrom: "Av. Hermanos Serdán, Puebla, Pue.",
             cityFrom: "Puebla",
@@ -114,19 +117,20 @@ describe("Models functionality test", () => {
             countryFrom: "México",
             customerName: "Hector",
             customerEmail: "hectorBusiness@qgmail.com",
-            customerAddress: "20 de Nov. 47, Centro, 90000 Tlaxcala de Xicohténcatl, Tlax.",
+            customerAddress:
+                "20 de Nov. 47, Centro, 90000 Tlaxcala de Xicohténcatl, Tlax.",
             customerCity: "Tlaxcala",
             customerZipCode: "90000",
             customerCountry: "México",
             invoiceDate: "28/07/2022",
             payTerms: "",
-            description: ""
-        }
+            description: "",
+        };
 
-        const invoiceCreated = await invoiceModels.create(invoice)
-        await invoiceModels.remove(invoiceCreated.id)
-        const invoiceFinded = await invoiceModels.getOne(invoiceCreated.id)
+        const invoiceCreated = await invoiceModels.create(invoice);
+        await invoiceModels.remove(invoiceCreated.id);
+        const invoiceFinded = await invoiceModels.getOne(invoiceCreated.id);
 
-        expect(invoiceFinded).toBe(null)
-    })
-})
+        expect(invoiceFinded).toBe(null);
+    });
+});

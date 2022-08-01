@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 
-let mongod
+let mongod;
 
 // connection to mongodb memory server
 module.exports.connect = async () => {
@@ -12,8 +12,8 @@ module.exports.connect = async () => {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     };
-    mongoose.connect(uri, mongooseOpts)
-}
+    mongoose.connect(uri, mongooseOpts);
+};
 
 // disconnect mongodb memory server
 module.exports.closeDatabse = async () => {
@@ -22,11 +22,10 @@ module.exports.closeDatabse = async () => {
         await mongoose.connection.close();
         await mongod.stop();
     }
-}
+};
 
 // clear mongodb memory server
 module.exports.clearDatabase = async () => {
-
     if (mongod) {
         const collections = await mongoose.connection.db.collections();
         // eslint-disable-next-line no-restricted-syntax
@@ -35,4 +34,4 @@ module.exports.clearDatabase = async () => {
             await collection.deleteMany();
         }
     }
-}
+};
