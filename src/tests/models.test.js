@@ -23,7 +23,7 @@ describe("Models functionality test", () => {
             customerCountry: "México",
             invoiceDate: "28/07/2022",
             invoiceStatus: "",
-            amountToPay: 50000,
+            amountToPay: "50000",
             description: "",
             userId: "",
         };
@@ -50,7 +50,7 @@ describe("Models functionality test", () => {
             customerCountry: "México",
             invoiceDate: "28/07/2022",
             invoiceStatus: "",
-            amountToPay: 50000,
+            amountToPay: "50000",
             description: "",
             userId: "",
         };
@@ -76,7 +76,7 @@ describe("Models functionality test", () => {
             customerCountry: "México",
             invoiceDate: "28/07/2022",
             invoiceStatus: "",
-            amountToPay: 50000,
+            amountToPay: "50000",
             description: "",
             userId: "",
         };
@@ -103,7 +103,7 @@ describe("Models functionality test", () => {
             customerCountry: "México",
             invoiceDate: "28/07/2022",
             invoiceStatus: "",
-            amountToPay: 50000,
+            amountToPay: "50000",
             description: "",
             userId: "",
         };
@@ -132,7 +132,7 @@ describe("Models functionality test", () => {
             customerCountry: "México",
             invoiceDate: "28/07/2022",
             invoiceStatus: "",
-            amountToPay: 50000,
+            amountToPay: "50000",
             description: "",
             userId: "",
         };
