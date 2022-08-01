@@ -16,6 +16,7 @@ const InvoiceSchema = new mongoose.Schema(
         invoiceStatus: String,
         amountToPay: Number,
         description: String,
+        userId: String,
     },
     {
         id: true,

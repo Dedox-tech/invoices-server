@@ -25,6 +25,7 @@ describe("Models functionality test", () => {
             invoiceStatus: "",
             amountToPay: 50000,
             description: "",
+            userId: "",
         };
 
         const invoiceCreated = await invoiceModels.create(invoice);
@@ -51,6 +52,7 @@ describe("Models functionality test", () => {
             invoiceStatus: "",
             amountToPay: 50000,
             description: "",
+            userId: "",
         };
 
         await invoiceModels.create(invoice);
@@ -76,6 +78,7 @@ describe("Models functionality test", () => {
             invoiceStatus: "",
             amountToPay: 50000,
             description: "",
+            userId: "",
         };
 
         const invoiceCreated = await invoiceModels.create(invoice);
@@ -102,6 +105,7 @@ describe("Models functionality test", () => {
             invoiceStatus: "",
             amountToPay: 50000,
             description: "",
+            userId: "",
         };
 
         const invoiceCreated = await invoiceModels.create(invoice);
@@ -130,6 +134,7 @@ describe("Models functionality test", () => {
             invoiceStatus: "",
             amountToPay: 50000,
             description: "",
+            userId: "",
         };
 
         const invoiceCreated = await invoiceModels.create(invoice);
