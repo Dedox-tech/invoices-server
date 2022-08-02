@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const mongoose = require("mongoose");
 const InvoiceSchema = require("./InvoiceSchema");
 
@@ -9,8 +10,10 @@ const getAll = async (query) => {
 
 const getOne = async (invoiceId) => {
     const filter = { _id: invoiceId };
+    console.log("Soy un filtro", filter);
     const invoiceModel = mongoose.model("invoice", InvoiceSchema);
     const result = await invoiceModel.findOne(filter);
+    console.log("El resultado: ", result);
     return result;
 };
 

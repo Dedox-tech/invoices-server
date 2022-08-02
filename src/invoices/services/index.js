@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const invoiceModels = require("../db/models/index");
 
 const getInvoices = async (req, res) => {
@@ -25,7 +26,8 @@ const getInvoices = async (req, res) => {
 const getInvoice = async (req, res) => {
     const invoiceId = req.params.id;
 
-    const invoice = invoiceModels.getOne(invoiceId);
+    const invoice = await invoiceModels.getOne(invoiceId);
+    console.log("La invoice", invoice);
 
     if (!invoice) {
         return res.status(500).send({
@@ -73,7 +75,10 @@ const updateInvoice = async (req, res) => {
     const userId = req.session.getUserId();
     const invoicePlusUserId = { ...invoice, userId };
 
-    const invoiceUpdated = invoiceModels.update(invoiceId, invoicePlusUserId);
+    const invoiceUpdated = await invoiceModels.update(
+        invoiceId,
+        invoicePlusUserId
+    );
 
     if (!invoiceUpdated) {
         return res.status(500).send({
@@ -102,7 +107,7 @@ const updateInvoice = async (req, res) => {
 const deleteInvoice = async (req, res) => {
     const invoiceId = req.params.id;
 
-    const invoiceDeleted = invoiceModels.remove(invoiceId);
+    const invoiceDeleted = await invoiceModels.remove(invoiceId);
 
     if (!invoiceDeleted) {
         return res.status(500).send({
