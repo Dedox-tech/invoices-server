@@ -10,7 +10,7 @@ const InvoiceSchema = new mongoose.Schema(
         customerEmail: String,
         customerAddress: String,
         customerCity: String,
-        customerZipCode: String,
+        customerZipCode: Number,
         customerCountry: String,
         invoiceDate: String,
         invoiceStatus: String,
