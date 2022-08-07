@@ -20,7 +20,7 @@ const port = 5000;
 // Cors configuration
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: process.env.CLIENT_DOMAIN,
         allowedHeaders: ["content-type", ...supertokens.getAllCORSHeaders()],
         methods: ["GET", "PUT", "POST", "DELETE"],
         credentials: true,
