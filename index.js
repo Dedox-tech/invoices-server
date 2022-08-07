@@ -54,6 +54,6 @@ app.use("/invoices", InvoicesRoutes);
 app.use("/users", UserRoutes);
 
 // Connect port
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Server listening on port ${port}`);
 });
