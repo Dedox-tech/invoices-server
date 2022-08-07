@@ -4,10 +4,6 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const supertokens = require("supertokens-node");
-const EmailPassword = require("supertokens-node/recipe/emailpassword");
-const {
-    verifySession,
-} = require("supertokens-node/recipe/session/framework/express");
 const {
     middleware,
     errorHandler,
@@ -57,21 +53,7 @@ db.once("open", () => {
 app.use("/invoices", InvoicesRoutes);
 app.use("/users", UserRoutes);
 
-// Testing routes
-app.get("/", verifySession(), async (req, res) => {
-    const userId = req.session.getUserId();
-    const userInfo = await EmailPassword.getUserById(userId);
-    console.log(userId);
-    console.log(userInfo);
-    res.send({ message: "Hola mundo" });
-});
-
-app.get("/hola-mundo", (req, res) => {
-    res.send("Soy un get request sin auth!");
-});
-
 // Connect port
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
-    console.log(superTokensConfig);
 });
