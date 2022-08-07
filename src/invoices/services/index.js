@@ -27,7 +27,6 @@ const getInvoice = async (req, res) => {
     const invoiceId = req.params.id;
 
     const invoice = await invoiceModels.getOne(invoiceId);
-    console.log("La invoice", invoice);
 
     if (!invoice) {
         return res.status(500).send({
