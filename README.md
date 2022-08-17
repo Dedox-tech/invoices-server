@@ -6,6 +6,8 @@ Este repositorio contiene el código del back-end usado para el proyecto final d
 
 La presente API siguió, en mayor medida, el paradigma REST en el desarrollo de la misma. Se estructuraron dos servicios principales, uno para las facturas y el otro para los usuarios.
 
+![Invoice Service](https://dl.dropboxusercontent.com/s/12xxp9t1jegom9u/Service%20Invoices%20%282%29.png?dl=0)
+
 ## Tecnologías utilizadas
 
 - Node.js
