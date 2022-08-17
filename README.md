@@ -20,6 +20,8 @@ Para los procesos de autenticación y autorización, se decidió integrar la API
 - Express.js
 - MongoDB
 - Mongoose
+- Jest
+- Mongodb Memory Server
 - SuperTokens.io
 
 ## Correr localmente
