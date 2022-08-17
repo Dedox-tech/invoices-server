@@ -2,6 +2,9 @@
 
 Este repositorio contiene el código del back-end usado para el proyecto final del JavaScript Top Gun Lab, de TEAM International. Para el deployment, se utilizó la plataforma Heroku, cuya API es expuesta y manejada desde el cliente.
 
+## Base de datos
+En el presente proyecto, se optó por la base de datos no relacional MongoDB. En ese sentido, se trabajó con el ODM (Object Data Modeling) Mongoose, para dar un esquema a nuestros datos. La base de datos se desplegó de manera independiente, usando el servicio MongoDB atlas.
+
 ## Servicios
 
 La presente API siguió, en mayor medida, el paradigma REST en el desarrollo de la misma. Se estructuraron dos servicios principales, uno para las facturas y el otro para los usuarios.
