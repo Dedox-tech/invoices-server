@@ -8,6 +8,12 @@ La presente API siguió, en mayor medida, el paradigma REST en el desarrollo de 
 
 ![Invoice Service](https://dl.dropboxusercontent.com/s/12xxp9t1jegom9u/Service%20Invoices%20%282%29.png?dl=0)
 
+## Autenticación
+
+Para los procesos de autenticación y autorización, se decidió integrar la API con un proveedor de autenticación externo ([SuperTokens.io](https://supertokens.com/)), el cual es open source y maneja las sesiones por defecto.
+
+![Auth Explanation](https://dl.dropboxusercontent.com/s/boz36qfl6t1b28d/Autenticaci%C3%B3n.png?dl=0)
+
 ## Tecnologías utilizadas
 
 - Node.js
